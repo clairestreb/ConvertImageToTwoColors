@@ -25,8 +25,15 @@ namespace ImageBW
                     for (y = 0; y < image1.Height; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
-                        if ((pixelColor != toSave1) && (pixelColor != toSave2))
+                        if ((pixelColor.R == toSave1.R && pixelColor.G == toSave1.G && pixelColor.B == toSave1.B) ||
+                            (pixelColor.R == toSave2.R && pixelColor.G == toSave2.G && pixelColor.B == toSave2.B))
+                        {
+                            //no-op, leave as-is
+                        }
+                        else
+                        {
                             image1.SetPixel(x, y, toReplace);
+                        }
                     }
                 }
 
